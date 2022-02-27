@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Hunger;
+using Game;
 
 namespace ConsoleApp1
 {
@@ -15,7 +16,8 @@ namespace ConsoleApp1
             Console.WriteLine("hello");
             Console.WriteLine(args);
             Hunger.Hungerclass.hunger();
-            Console.WriteLine("really??");
+            Game.MainGame.Play();
+            //Console.WriteLine("really??");
 
         }
     }
