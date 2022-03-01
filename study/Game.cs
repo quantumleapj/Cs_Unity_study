@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//using Organism;
+
 namespace Game
 {
     internal class MainGame
@@ -16,7 +18,7 @@ namespace Game
                 string s = Console.ReadLine();
 
                 switch (s) {
-                    case "hello":
+                    case "hello": //hello가 출력됨
                     case "1":
                         Console.WriteLine();
                         Console.WriteLine("1");
@@ -24,6 +26,14 @@ namespace Game
                     case "exit":
                         Console.WriteLine("exit");
                         exitcode= false;
+                        break;
+                    case "jane":
+                        Organism jane = new Organism();
+                        Console.WriteLine(jane.Name);
+                        break;
+                    case "mary":
+                        Organism mary = new Organism("mary", "human");
+                        Console.WriteLine(mary.Name);
                         break;
                     default:
                         Console.WriteLine("hello");
