@@ -29,11 +29,13 @@ namespace Game
                         break;
                     case "jane":
                         Organism jane = new Organism();
-                        Console.WriteLine(jane.Name);
+                        Console.WriteLine(jane.name);
+                        Console.WriteLine(jane.health);
                         break;
                     case "mary":
                         Organism mary = new Organism("mary", "human");
-                        Console.WriteLine(mary.Name);
+                        Console.WriteLine(mary.name);
+                        Console.WriteLine(mary.health);
                         break;
                     default:
                         Console.WriteLine("hello");

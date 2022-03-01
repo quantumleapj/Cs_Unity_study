@@ -6,26 +6,31 @@ using System.Threading.Tasks;
 
     class Organism
     {
-    public string Name;
-    public string Species;
-    public int Health;
+    public string name;
+    public string species;
+    public int health;
+    public int hunger;
 
     public Organism()
     {
-        Name = "jane";
-        Species = "human";
-        Health = 100;
+        name = "jane";
+        species = "human";
+        health = 100;
+        hunger=100;
     }
     public Organism(string name, string species) //생성자 매개변수 앞에 꼭 자료형 써줘야함 
     {
-        Name = name;
-        Species = species;
+        name = name;
+        species = species;
+        health = 100;
+        hunger=100;
     }
-    public Organism(string name, string species, int health) //생성자 매개변수 앞에 꼭 자료형 써줘야함 
+    public Organism(string name, string species, int health) 
     {
-        Name = name;
-        Species = species;
-        Health = health;
+        name = name;
+        species = species;
+        health = health;
+        hunger=100;
     }
 
 }
