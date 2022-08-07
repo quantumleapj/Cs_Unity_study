@@ -11,12 +11,15 @@ public class DataManager : MonoBehaviour
     public item[] gameitems;
     public paragraph[] storys;
 
+    public player player;
+
 
     // Start is called before the first frame update
     void Start()
     {
         LoadXmlData();
         LoadStoryData();
+        defaultPlayerStart();
         playManager =  GameObject.Find("EventSystem").GetComponent<playManager>();
         PleaseBeShallowCopy();
         StartGameCanvas();
@@ -40,16 +43,15 @@ public class DataManager : MonoBehaviour
         }
         reader.Close();
 
-        Debug.Log($"Loaded item : {gameitems[0]}");
-        Debug.Log($"itemID: {gameitems[0].name}");
-        Debug.Log($"description: {gameitems[0].description}");
-        Debug.Log($"description: {gameitems[0].value}");
-        Debug.Log($"description: {gameitems[0].warmth}");
-        if(gameitems[0].warmth == null){
-            Debug.Log("warmth property of bone coin item is null");
-        }//it printed this log. 
-
-
+        //test
+        // Debug.Log($"Loaded item : {gameitems[0]}");
+        // Debug.Log($"itemID: {gameitems[0].name}");
+        // Debug.Log($"description: {gameitems[0].description}");
+        // Debug.Log($"description: {gameitems[0].value}");
+        // Debug.Log($"description: {gameitems[0].warmth}");
+        // if(gameitems[0].warmth == null){
+        //     Debug.Log("warmth property of bone coin item is null");
+        // }//it printed this log. 
 
     }
 
@@ -64,26 +66,40 @@ public class DataManager : MonoBehaviour
         }
         reader.Close();
 
-        Debug.Log($"paragraph 0 :{storys[0].mainText}");
-        Debug.Log($"paragraph 0 :{storys[0].choice}");
-        Debug.Log($"paragraph 0 :{storys[0].choice[0].choiceText}");
-        Debug.Log($"paragraph 0 :{storys[0].choice.Length}");
+        // test
+        // Debug.Log($"paragraph 0 :{storys[0].mainText}");
+        // Debug.Log($"paragraph 0 :{storys[0].choice}");
+        // Debug.Log($"paragraph 0 :{storys[0].choice[0].choiceText}");
+        // Debug.Log($"paragraph 0 :{storys[0].choice.Length}");
+
+    }
+
+    public void defaultPlayerStart(){
+
+        string path = $"{Application.dataPath}/Resources/GameText/defaultplayer.xml";
+
+        XmlSerializer serializer = new XmlSerializer(typeof(player), new XmlRootAttribute("player"));
+
+        StreamReader reader = new StreamReader(path);
+        using(reader){
+        player=(player)serializer.Deserialize(reader.BaseStream);
+        }
+        reader.Close();
 
     }
 
     public void PleaseBeShallowCopy(){
         //is this shallowcopy? i hope so. i'm not really sure though..
 
-        // playManager =  GameObject.Find("EventSystem").GetComponent<playManager>();
         playManager.storys=storys;
         playManager.gameitems=gameitems;
+        playManager.player=player;
 
     }
 
     public void StartGameCanvas(){
 
-        // playManager =  GameObject.Find("EventSystem").GetComponent<playManager>();
-        playManager.setPlayCanvas(storys[0].mainText);
+        playManager.setPlayCanvas(0);
 
     }
 }
